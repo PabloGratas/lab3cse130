@@ -60,7 +60,7 @@ sqSum xs = foldLeft f base xs
 pipe :: [(a -> a)] -> (a -> a)
 pipe fs   = foldLeft f base fs
   where
-    f a x = error "TBD"
+    f a x = \a -> x
     base  = \a -> a --Our base case should be the identity function.
 
 --------------------------------------------------------------------------------
@@ -79,9 +79,9 @@ sepConcat :: String -> [String] -> String
 sepConcat sep []     = ""
 sepConcat sep (x:xs) = foldLeft f base l
   where
-    f a x            = error "TBD:sepConcat:f"
+    f a x            = a ++ x
     base             = "" --Base case should be the empty string.
-    l                = error "TBD:l"
+    l                = xs
 
 intString :: Int -> String
 intString = show
@@ -112,7 +112,7 @@ stringOfList f xs = error "TBD:stringOfList"
 -- ["foo", "foo"]
 
 clone :: a -> Int -> [a]
-clone x n = error "TBD:clone"
+clone x n = foldLeft 
 
 type BigInt = [Int]
 
